@@ -1,23 +1,21 @@
-name: DASH Harvard Law → Azure Law Dropzone
+﻿name: DASH Harvard Law → Azure Law Dropzone
 
 on:
-  schedule:
-    - cron: "0 2 * * *"   # runs daily at 2 AM UTC
   workflow_dispatch:
 
 jobs:
-  ingest-dash:
+  dash-to-azure:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
 
-      - name: Install deps
+      - name: Install dependencies
         run: pip install requests azure-storage-blob feedparser
 
       - name: Run DASH ingestion
