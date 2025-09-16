@@ -29,3 +29,4 @@ jobs:
         env:
           AZURE_STORAGE_CONN_STRING: ${{ secrets.AZURE_STORAGE_CONN_STRING }}
         run: python scripts/dash_ingest.py
+
