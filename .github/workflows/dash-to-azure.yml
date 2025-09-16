@@ -18,6 +18,13 @@ jobs:
       - name: Install dependencies
         run: pip install requests azure-storage-blob feedparser
 
+      - name: Debug Secret
+        run: |
+          echo "AZURE_STORAGE_CONN_STRING length: ${#AZURE_STORAGE_CONN_STRING}"
+          echo "Starts with: ${AZURE_STORAGE_CONN_STRING:0:30}..."
+        env:
+          AZURE_STORAGE_CONN_STRING: ${{ secrets.AZURE_STORAGE_CONN_STRING }}
+
       - name: Run DASH ingestion
         env:
           AZURE_STORAGE_CONN_STRING: ${{ secrets.AZURE_STORAGE_CONN_STRING }}
